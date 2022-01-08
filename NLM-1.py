@@ -1,6 +1,11 @@
 import math
 import random
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from matplotlib.animation import PillowWriter
+from matplotlib._version import get_versions as mplv
+
+
 
 def initialize(dimensional, n):
     
@@ -27,6 +32,51 @@ def straightline(dimensional, n):
         for j in range(dimensional):
             vector[i][j] = round(vector[i-1][j] + direction[j], 3)
         
+    return vector
+
+def circule():
+    vector = [[0 for i in range(2)] for j in range(9)]
+
+    PI = 3.14159265358979323846
+
+    vector[8][0]= round(random.uniform(-2.0, 2.0), 3)
+    vector[8][1]= round(random.uniform(-2.0, 2.0), 3)
+
+    vector[0][0] = vector[8][0]+2.5
+    vector[0][1] = vector[8][1]
+
+    vector[1][0] = vector[8][0] + math.cos(PI/4)*2.5
+    vector[1][1] = vector[8][1] + math.sin(PI/4)*2.5
+
+    vector[2][0] = vector[8][0]
+    vector[2][1] = vector[8][1]+2.5
+
+    vector[3][0] = vector[8][0] - math.cos(PI/4)*2.5
+    vector[3][1] = vector[8][1] + math.sin(PI/4)*2.5
+
+    vector[4][0] = vector[8][0]-2.5
+    vector[4][1] = vector[8][1]
+
+    vector[5][0] = vector[8][0] - math.cos(PI/4)*2.5
+    vector[5][1] = vector[8][1] - math.sin(PI/4)*2.5
+
+    vector[6][0] = vector[8][0]
+    vector[6][1] = vector[8][1]-2.5
+
+    vector[7][0] = vector[8][0] + math.cos(PI/4)*2.5
+    vector[7][1] = vector[8][1] - math.sin(PI/4)*2.5
+
+    return vector
+
+
+def heiix(n):
+    vector = [[0 for i in range(3)] for j in range(n)]
+
+    for i in range(n):
+        vector[i][2] = (math.sqrt(2)/2)*i
+        vector[i][0] = math.cos(vector[i][2])
+        vector[i][1] = math.sin(vector[i][2])
+
     return vector
 
 def function(x,y):# N次元　ｄ次元のデータのＥを求める
@@ -104,17 +154,24 @@ def differential(func, x, y, tmp, h):#微分
 def extreme(x, y):#最急降下法
     
     a = 0.5
-    esp = 1.e-4
-    ess = 1.e-10
+    esp = 1.e-5#helix 4 #circle 8 stl 5
+    ess = 1.e-10#helix 7 #circle 10
     err = 0.0
     tmp = 0.0
     
     nn = 0
     m = 100000
+
+    
+    #plt.xlim(-10,10)
+    #plt.ylim(-10,10)
     
     n = len(y)
     dimensional = len(y[0])
     
+    ims = []
+    ytmps = []
+    xtmps = []
     while True:
         nn += 1
         dy = autodifferen(function, x, y)
@@ -122,13 +179,21 @@ def extreme(x, y):#最急降下法
         for i in range(n):
             for j in range(dimensional):
                 y[i][j] -= a * dy[count]
-                if y[i][j] < -10:
-                    y[i][j] = -10
-                if y[i][j] > 10:
-                    y[i][j] = 10
-                
+
+                if count % 2 == 0:
+                    xtmp = y[i][j]
+                    xtmps.append(xtmp)
+                else:
+                    ytmp = y[i][j]
+                    ytmps.append(ytmp)
                 count += 1
         
+        if nn % 10 == 0:#helix 30 circle 10 stl 100
+            im = plt.scatter(xtmps, ytmps, c="blue")
+            ims.append([im])
+        ytmps = []
+        xtmps = []
+
         tmp = err
         err = abs(function(x,y))
         print(nn,err)
@@ -138,9 +203,10 @@ def extreme(x, y):#最急降下法
             break
         if nn != 0 and abs(tmp - err) < ess:
             break
-            
-        
-    return x, y
+    
+    
+    
+    return x, y, ims
 
 
 
@@ -149,10 +215,12 @@ def extreme(x, y):#最急降下法
 n = 9
 dimensional = 9
 i_d = 2
-x0 = straightline(dimensional, n)
+#x0 = straightline(dimensional, n)
+x0 = circule() #n=9
+#x0 = heiix(n)
 y0 = initialize(i_d, n)
 #y0 = [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]
-
+fig = plt.figure()
 p = extreme(x0, y0)
 
 print(p[0])
@@ -170,10 +238,10 @@ for i in range(len(p[1])):
                 
     
     print(p[1][i])
-    
-plt.plot(ans_x,ans_y)
-plt.show()
 
+ani = animation.ArtistAnimation(fig, p[2], interval=1, repeat_delay=1000)
+plt.show()
+ani.save('stl_1e-6_001.gif',writer='imagemagick')
 
 
 
