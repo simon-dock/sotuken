@@ -209,9 +209,6 @@ def extreme(x, y):#最急降下法
     return x, y, ims
 
 
-
-
-
 n = 9
 dimensional = 9
 i_d = 2
