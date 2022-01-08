@@ -1,5 +1,6 @@
 import math
 import random
+import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.animation import PillowWriter
@@ -31,78 +32,62 @@ def straightline(dimensional, n):
         
     return vector
 
-def circule():
-    vector = [[0 for i in range(2)] for j in range(9)]
-
-    PI = 3.14159265358979323846
-
-    vector[8][0]= round(random.uniform(-2.0, 2.0), 3)
-    vector[8][1]= round(random.uniform(-2.0, 2.0), 3)
-
-    vector[0][0] = vector[8][0]+2.5
-    vector[0][1] = vector[8][1]
-
-    vector[1][0] = vector[8][0] + math.cos(PI/4)*2.5
-    vector[1][1] = vector[8][1] + math.sin(PI/4)*2.5
-
-    vector[2][0] = vector[8][0]
-    vector[2][1] = vector[8][1]+2.5
-
-    vector[3][0] = vector[8][0] - math.cos(PI/4)*2.5
-    vector[3][1] = vector[8][1] + math.sin(PI/4)*2.5
-
-    vector[4][0] = vector[8][0]-2.5
-    vector[4][1] = vector[8][1]
-
-    vector[5][0] = vector[8][0] - math.cos(PI/4)*2.5
-    vector[5][1] = vector[8][1] - math.sin(PI/4)*2.5
-
-    vector[6][0] = vector[8][0]
-    vector[6][1] = vector[8][1]-2.5
-
-    vector[7][0] = vector[8][0] + math.cos(PI/4)*2.5
-    vector[7][1] = vector[8][1] - math.sin(PI/4)*2.5
-
-    return vector
 
 
-def heiix(n):
-    vector = [[0 for i in range(3)] for j in range(n)]
-
-    for i in range(n):
-        vector[i][2] = (math.sqrt(2)/2)*i
-        vector[i][0] = math.cos(vector[i][2])
-        vector[i][1] = math.sin(vector[i][2])
-
-    return vector
-
-n = 9
-dimensional = 9
-i_d = 2
-#x0 = straightline(dimensional, n)
-x0 = circule() #n=9
-#x0 = heiix(n)
-y0 = initialize(i_d, n)
-#y0 = [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]
-fig = plt.figure()
-p = extreme(x0, y0)
-
-print(p[0])
-
-ans_x = initialize(1, n)
-ans_y = initialize(1, n)
-
-for i in range(len(p[1])):
-    for j in range(len(p[1][0])):
-        p[1][i][j] = round(p[1][i][j],4)
-        if j == 0:
-            ans_x[i] = p[1][i][j]
-        else:
-            ans_y[i] = p[1][i][j]
-                
+def multi_mat_vec(covariance_matrix, vector_eigen):
+    dimensional = len(vector_eigen)
+    Ax = [0 for i in range(dimensional)]
     
-    print(p[1][i])
+    for i in range(dimensional):
+        Ax[i] = 0.0
+        for j in range(dimensional):
+            Ax[i] += covariance_matrix[i][j] * vector_eigen[j]
+    
+    return Ax
 
-ani = animation.ArtistAnimation(fig, p[2], interval=1, repeat_delay=1000)
-plt.show()
-ani.save('stl_1e-6_001.gif',writer='imagemagick')
+def inner_prod(vector_eigen, Ax):
+    prod = 0.0
+    dimensional = len(vector_eigen)
+    for i in range(dimensional):
+        prod += vector_eigen[i] * Ax[i]
+
+    return prod
+
+def normalize_vec(vector_eigen, Ax):
+    length = math.sqrt(inner_prod(Ax, Ax))
+    dimensional = len(vector_eigen)
+    for i in range(dimensional):
+        vector_eigen[i] = Ax[i] / length
+    
+    return vector_eigen
+
+def poweigen(covariance_matrix, vector_eigen):
+
+    EPS = 1e-5
+    l = 0.0
+    old_l = 1.0
+
+    while abs(l-old_l) > EPS*abs(l):
+        old_l = l
+        Ax = multi_mat_vec(covariance_matrix, vector_eigen)
+        l = inner_prod(vector_eigen, Ax)
+        vector_eigen = normalize_vec(vector_eigen, Ax)
+
+    return l
+
+n = 10
+dimensional = 5
+i_d = 2
+
+
+origin_data = straightline(dimensional, n)
+vector_eigen = [0 for i in range(dimensional)]
+vector_eigen[0] = 1
+
+np_data = np.array(origin_data)
+covariance_matrix = np.cov(np_data, rowvar=0, bias=1)
+poweigen(covariance_matrix, vector_eigen)
+print(origin_data)
+print(vector_eigen)
+
+
