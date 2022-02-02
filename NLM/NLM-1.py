@@ -1,5 +1,7 @@
+from itertools import count
 import math
 import random
+from re import A
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.animation import PillowWriter
@@ -13,8 +15,43 @@ def initialize(dimensional, n):
     
     for i in range(n):
         for j in range(dimensional):
-            vector[i][j] = round(random.uniform(-5.0, 5.0), 3)
+            #vector[i][j] = round(random.uniform(-5.0, 5.0), 3)
+            pass
             
+    return vector
+
+def cube():
+
+    vector = [[0 for i in range(3)] for j in range(27)]
+
+    cou = 0
+
+    for aa in range(-1,2):
+        for bb in range(-1,2):
+            for cc in range(-1,2):
+                vector[cou] = [aa,bb,cc]
+                cou += 1
+
+    return vector
+
+def cube_l():
+
+    vector = [[0 for i in range(3)] for j in range(27)]
+
+    cou = 0
+
+    for aa in range(-1,2):
+        for bb in range(-1,2):
+            for cc in range(-1,2):
+                if bb == -1:
+                    b = -3
+                if bb == 1:
+                    b = 3
+                if bb == 0:
+                    b=0
+                vector[cou] = [aa,b,cc]
+                cou += 1
+
     return vector
     
 
@@ -154,13 +191,13 @@ def differential(func, x, y, tmp, h):#微分
 def extreme(x, y):#最急降下法
     
     a = 0.5
-    esp = 1.e-4#helix 4 #circle 8 stl 5
+    esp = 1.e-8#helix 4 #circle 8 stl 5
     ess = 1.e-10#helix 7 #circle 10
     err = 0.0
     tmp = 0.0
     
     nn = 0
-    m = 100000
+    m = 10000
 
     
     #plt.xlim(-10,10)
@@ -188,7 +225,7 @@ def extreme(x, y):#最急降下法
                     ytmps.append(ytmp)
                 count += 1
         
-        if nn % 30 == 0:#helix 30 circle 10 stl 100
+        if nn % 10 == 0:#helix 30 circle 10 stl 100
             im = plt.scatter(xtmps, ytmps, c="blue")
             ims.append([im])
         ytmps = []
@@ -209,12 +246,14 @@ def extreme(x, y):#最急降下法
     return x, y, ims
 
 
-n = 15
+n = 9
 dimensional = 3
 i_d = 2
 #x0 = straightline(dimensional, n)
-#x0 = circule() #n=9
-x0 = heiix(n)
+x0 = circule() #n=9
+#x0 = heiix(n) #n=15
+
+#x0 = cube()#n=27
 y0 = initialize(i_d, n)
 #y0 = [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]
 fig = plt.figure()
@@ -240,7 +279,7 @@ for i in range(len(p[1])):
 
 ani = animation.ArtistAnimation(fig, p[2], interval=1, repeat_delay=1000)
 plt.show()
-ani.save('helix_1e-6_001.gif',writer='imagemagick')
+ani.save('circule_init0_0.gif',writer='imagemagick')
 
 
 
