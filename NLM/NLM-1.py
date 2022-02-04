@@ -15,8 +15,8 @@ def initialize(dimensional, n):
     
     for i in range(n):
         for j in range(dimensional):
-            #vector[i][j] = round(random.uniform(-5.0, 5.0), 3)
-            pass
+            vector[i][j] = round(random.uniform(-5.0, 5.0), 3)
+            #pass
             
     return vector
 
@@ -33,6 +33,55 @@ def cube():
                 cou += 1
 
     return vector
+
+def try4():
+
+    vector = [[0 for i in range(3)] for j in range(4)]
+
+    vector = [[1,1,1], [-1,-1,1], [1,-1,-1] , [-1,1,-1]]
+
+    return vector
+
+def cube_5():
+
+    vector = [[0 for i in range(4)] for j in range(5)]
+
+    vector = [[1,1,1,1], [-1,-1,1,1], [1,-1,-1, 1] , [-1,1,-1,1], [-1,1,1,-1]]
+
+    return vector
+
+def cube_6():
+
+    vector = [[0 for i in range(5)] for j in range(6)]
+
+    vector = [[1,1,1,1,1], [-1,-1,1,1,1], [1,-1,-1,1,1], [-1,1,-1,1,1], [-1,1,1,-1,1], [-1,1,1,1,-1]]
+
+    return vector
+
+def cube_7():
+
+    vector = [[0 for i in range(6)] for j in range(7)]
+
+    vector = [[1,1,1,1,1,1], [-1,-1,1,1,1,1], [1,-1,-1,1,1,1], [-1,1,-1,1,1,1], [-1,1,1,-1,1,1], [-1,1,1,1,-1,1], [-1,1,1,1,1,-1]]
+
+    return vector
+
+def cube_8():
+
+    vector = [[0 for i in range(7)] for j in range(8)]
+
+    vector = [[1,1,1,1,1,1,1], [-1,-1,1,1,1,1,1], [1,-1,-1,1,1,1,1], [-1,1,-1,1,1,1,1], [-1,1,1,-1,1,1,1], [-1,1,1,1,-1,1,1], [-1,1,1,1,1,-1,1], [-1,1,1,1,1,1,-1]]
+
+    return vector
+
+def cube_9():
+
+    vector = [[0 for i in range(8)] for j in range(9)]
+
+    vector = [[1,1,1,1,1,1,1,1], [-1,-1,1,1,1,1,1,1], [1,-1,-1,1,1,1,1,1], [-1,1,-1,1,1,1,1,1], [-1,1,1,-1,1,1,1,1], [-1,1,1,1,-1,1,1,1], [-1,1,1,1,1,-1,1,1], [-1,1,1,1,1,1,-1,1], [-1,1,1,1,1,1,1,-1]]
+
+    return vector
+
 
 def cube_l():
 
@@ -192,12 +241,12 @@ def extreme(x, y):#最急降下法
     
     a = 0.5
     esp = 1.e-8#helix 4 #circle 8 stl 5
-    ess = 1.e-10#helix 7 #circle 10
+    ess = 1.e-15#helix 7 #circle 10
     err = 0.0
     tmp = 0.0
     
     nn = 0
-    m = 10000
+    m = 100000
 
     
     #plt.xlim(-10,10)
@@ -225,7 +274,7 @@ def extreme(x, y):#最急降下法
                     ytmps.append(ytmp)
                 count += 1
         
-        if nn % 10 == 0:#helix 30 circle 10 stl 100
+        if nn % 15 == 0:#helix 30 circle 10 stl 100
             im = plt.scatter(xtmps, ytmps, c="blue")
             ims.append([im])
         ytmps = []
@@ -246,14 +295,19 @@ def extreme(x, y):#最急降下法
     return x, y, ims
 
 
-n = 9
+n = 4
 dimensional = 3
 i_d = 2
 #x0 = straightline(dimensional, n)
-x0 = circule() #n=9
+#x0 = circule() #n=9
 #x0 = heiix(n) #n=15
-
+#x0 = try4() #n=4
 #x0 = cube()#n=27
+#x0 = cube_5()
+x0 = cube_9()
+
+n = len(x0)
+dimensional = len(x0[0])
 y0 = initialize(i_d, n)
 #y0 = [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]
 fig = plt.figure()
@@ -273,13 +327,14 @@ for i in range(len(p[1])):
         else:
             pass
             #ans_y[i] = p[1][i][j]
+
                 
     
     print(p[1][i])
 
 ani = animation.ArtistAnimation(fig, p[2], interval=1, repeat_delay=1000)
 plt.show()
-ani.save('circule_init0_0.gif',writer='imagemagick')
+ani.save('cube9_004.gif',writer='imagemagick')
 
 
 
