@@ -1,0 +1,247 @@
+[sxq6570@gpgpu cache]$ ./a.out 128
+Occupied memory size: 128(KB)
+Case 1:          0.020413756
+Case 2:          0.012206461
+Case 3:          0.010093407
+Case 4:          0.009502916
+Case 5:          0.011464387
+[sxq6570@gpgpu cache]$ ./a.out 128
+Occupied memory size: 128(KB)
+Case 1:          0.018517899
+Case 2:          0.011251972
+Case 3:          0.009508027
+Case 4:          0.009425970
+Case 5:          0.011331162
+[sxq6570@gpgpu cache]$ ./a.out 128
+Occupied memory size: 128(KB)
+Case 1:          0.017534673
+Case 2:          0.010490238
+Case 3:          0.008995100
+Case 4:          0.009509154
+Case 5:          0.011407706
+[sxq6570@gpgpu cache]$ ./a.out 128
+Occupied memory size: 128(KB)
+Case 1:          0.019574064
+Case 2:          0.011782923
+Case 3:          0.009839608
+Case 4:          0.009627175
+Case 5:          0.011539153
+[sxq6570@gpgpu cache]$ ./a.out 128
+Occupied memory size: 128(KB)
+Case 1:          0.017826008
+Case 2:          0.010856924
+Case 3:          0.009534111
+Case 4:          0.009504455
+Case 5:          0.011390991
+[sxq6570@gpgpu cache]$ ./a.out 256
+Occupied memory size: 513(KB)
+Case 1:          0.041941427
+Case 2:          0.031004869
+Case 3:          0.034381066
+Case 4:          0.037395053
+Case 5:          0.045009911
+[sxq6570@gpgpu cache]$ ./a.out 256
+Occupied memory size: 513(KB)
+Case 1:          0.036847598
+Case 2:          0.031962266
+Case 3:          0.034467409
+Case 4:          0.037403406
+Case 5:          0.045150201
+[sxq6570@gpgpu cache]$ ./a.out 256
+Occupied memory size: 513(KB)
+Case 1:          0.036679864
+Case 2:          0.031744749
+Case 3:          0.034233054
+Case 4:          0.037332810
+Case 5:          0.044901598
+[sxq6570@gpgpu cache]$ ./a.out 256
+Occupied memory size: 513(KB)
+Case 1:          0.042272381
+Case 2:          0.031785107
+Case 3:          0.034396883
+Case 4:          0.037419249
+Case 5:          0.045049961
+[sxq6570@gpgpu cache]$ ./a.out 256
+Occupied memory size: 513(KB)
+Case 1:          0.039634359
+Case 2:          0.029895917
+Case 3:          0.032086260
+Case 4:          0.034809701
+Case 5:          0.042725266
+[sxq6570@gpgpu cache]$ ./a.out 512
+Occupied memory size: 2050(KB)
+Case 1:          0.104536910
+Case 2:          0.140521471
+Case 3:          0.143340801
+Case 4:          0.149735183
+Case 5:          0.187879804
+[sxq6570@gpgpu cache]$ ./a.out 512
+Occupied memory size: 2050(KB)
+Case 1:          0.098394789
+Case 2:          0.130668967
+Case 3:          0.133724917
+Case 4:          0.139265480
+Case 5:          0.177993256
+[sxq6570@gpgpu cache]$ ./a.out 512
+Occupied memory size: 2050(KB)
+Case 1:          0.102272693
+Case 2:          0.140469404
+Case 3:          0.143101591
+Case 4:          0.149839574
+Case 5:          0.187301109
+[sxq6570@gpgpu cache]$ ./a.out 512
+Occupied memory size: 2050(KB)
+Case 1:          0.103069619
+Case 2:          0.140553124
+Case 3:          0.142965639
+Case 4:          0.149626386
+Case 5:          0.186289626
+[sxq6570@gpgpu cache]$ ./a.out 512
+Occupied memory size: 2050(KB)
+Case 1:          0.103080028
+Case 2:          0.140309500
+Case 3:          0.143439024
+Case 4:          0.149577711
+Case 5:          0.187570348
+[sxq6570@gpgpu cache]$ ./a.out 1024
+Occupied memory size: 8196(KB)
+Case 1:          0.379604454
+Case 2:          1.013440882
+Case 3:          0.582800585
+Case 4:          0.598198200
+Case 5:          0.755927595
+[sxq6570@gpgpu cache]$ ./a.out 1024
+Occupied memory size: 8196(KB)
+Case 1:          0.378898629
+Case 2:          1.010326585
+Case 3:          0.585575606
+Case 4:          0.598692338
+Case 5:          0.756974267
+[sxq6570@gpgpu cache]$ ./a.out 1024
+Occupied memory size: 8196(KB)
+Case 1:          0.406412941
+Case 2:          1.020002081
+Case 3:          0.583165595
+Case 4:          0.598088245
+Case 5:          0.757369991
+[sxq6570@gpgpu cache]$ ./a.out 1024
+Occupied memory size: 8196(KB)
+Case 1:          0.387792212
+Case 2:          1.016277612
+Case 3:          0.581003362
+Case 4:          0.598008580
+Case 5:          0.753929125
+[sxq6570@gpgpu cache]$ ./a.out 1024
+Occupied memory size: 8196(KB)
+Case 1:          0.379207913
+Case 2:          1.015562432
+Case 3:          0.584112865
+Case 4:          0.598691716
+Case 5:          0.758045521
+[sxq6570@gpgpu cache]$ ./a.out 2048
+Occupied memory size: 32776(KB)
+Case 1:          1.531563812
+Case 2:          5.139090758
+Case 3:          2.662108047
+Case 4:          2.404043401
+Case 5:          3.390821391
+[sxq6570@gpgpu cache]$ ./a.out 2048
+Occupied memory size: 32776(KB)
+Case 1:          1.529600104
+Case 2:          5.145520874
+Case 3:          2.641194461
+Case 4:          2.403430824
+Case 5:          3.417492279
+[sxq6570@gpgpu cache]$ ./a.out 2048
+Occupied memory size: 32776(KB)
+Case 1:          1.530631042
+Case 2:          5.145536196
+Case 3:          2.635575871
+Case 4:          2.405019522
+Case 5:          3.360690281
+[sxq6570@gpgpu cache]$ ./a.out 2048
+Occupied memory size: 32776(KB)
+Case 1:          1.531245547
+Case 2:          5.151885659
+Case 3:          2.629466330
+Case 4:          2.404731857
+Case 5:          3.381227522
+[sxq6570@gpgpu cache]$ ./a.out 2048
+Occupied memory size: 32776(KB)
+Case 1:          1.529043314
+Case 2:          5.163408227
+Case 3:          2.720773688
+Case 4:          2.409619075
+Case 5:          3.462225698
+[sxq6570@gpgpu cache]$ ./a.out 4096
+Occupied memory size: 131088(KB)
+Case 1:          6.188135592
+Case 2:         22.677958362
+Case 3:         11.277071167
+Case 4:          9.608298846
+Case 5:         14.090022312
+[sxq6570@gpgpu cache]$ ./a.out 4096
+Occupied memory size: 131088(KB)
+Case 1:          6.191954737
+Case 2:         22.557721649
+Case 3:         11.248882021
+Case 4:          9.599088936
+Case 5:         14.271940352
+[sxq6570@gpgpu cache]$ ./a.out 4096
+Occupied memory size: 131088(KB)
+Case 1:          6.375567604
+Case 2:         22.732493062
+Case 3:         11.489319690
+Case 4:          9.704320849
+Case 5:         14.360811017
+[sxq6570@gpgpu cache]$ ./a.out 4096
+Occupied memory size: 131088(KB)
+Case 1:          6.210087982
+Case 2:         22.563093146
+Case 3:         11.151188099
+Case 4:          9.594203058
+Case 5:         14.042228058
+[sxq6570@gpgpu cache]$ ./a.out 4096
+Occupied memory size: 131088(KB)
+Case 1:          6.196943709
+Case 2:         22.565341222
+Case 3:         11.178083727
+Case 4:          9.609315120
+Case 5:         14.088978736
+[sxq6570@gpgpu cache]$ ./a.out 8192
+Occupied memory size: 524320(KB)
+Case 1:         25.279534346
+Case 2:        139.122744615
+Case 3:         47.827044334
+Case 4:         38.490588030
+Case 5:         60.403898436
+[sxq6570@gpgpu cache]$ ./a.out 8192
+Occupied memory size: 524320(KB)
+Case 1:         25.460663431
+Case 2:        136.992569959
+Case 3:         47.918532133
+Case 4:         38.467444452
+Case 5:         59.536340590
+[sxq6570@gpgpu cache]$ ./a.out 8192
+Occupied memory size: 524320(KB)
+Case 1:         25.441964600
+Case 2:        139.326900225
+Case 3:         48.476310244
+Case 4:         39.021543856
+Case 5:         60.288696747
+[sxq6570@gpgpu cache]$ ./a.out 8192
+Occupied memory size: 524320(KB)
+Case 1:         26.070652260
+Case 2:        136.606504277
+Case 3:         48.534439133
+Case 4:         39.196169568
+Case 5:         59.715889910
+[sxq6570@gpgpu cache]$ ./a.out 8192
+Occupied memory size: 524320(KB)
+Case 1:         25.271477400
+Case 2:        135.209571575
+Case 3:         47.582583690
+Case 4:         38.774120124
+Case 5:         59.550278190
+[sxq6570@gpgpu cache]$ 
+
